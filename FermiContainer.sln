@@ -22,5 +22,7 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Hjerpbakk.FermiContainer\Hjerpbakk.FermiContainer.csproj
+		description = Even simpler than the simplest IoC-container, FermiContainer makes IoC easy for everyone.
+		version = 1.0
 	EndGlobalSection
 EndGlobal
