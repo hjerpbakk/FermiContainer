@@ -1,7 +1,7 @@
-FermiContainer
+![alt tag](https://github.com/Sankra/FermiContainer/blob/master/logo%402x.png) FermiContainer
 ==============
 
-![alt tag](https://github.com/Sankra/FermiContainer/blob/master/logo%402x.png)
+
 
 Even simpler than the simplest IoC-container, FermiContainer makes IoC easy for everyone.
 
