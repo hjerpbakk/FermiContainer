@@ -1,7 +1,7 @@
 FermiContainer
 ==============
 
-<img align="left" src="https://github.com/Sankra/FermiContainer/blob/master/logo%402x.png" width="128" height="128">
+<img align="left" src="https://github.com/Sankra/FermiContainer/blob/master/logo%402x.png" width="128" height="128" margin="5px">
 
 Even simpler than the simplest IoC-container, FermiContainer makes IoC easy for everyone.
 
