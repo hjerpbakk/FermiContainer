@@ -22,8 +22,7 @@ namespace TestHjerpbakk.FermiContainer
 
             var calculator = m_fermiContainer.Resolve<ICalculator>();
 
-            var sum = calculator.Add(1, 2);
-            Assert.AreEqual(3, sum);
+            Assert.IsInstanceOf<Calculator>(calculator);
         }
 
         [Test]
@@ -69,21 +68,15 @@ namespace TestHjerpbakk.FermiContainer
 
             var calculator = m_fermiContainer.Resolve<ICalculator>();
 
-            var sum = calculator.Add(1, 2);
-            Assert.AreEqual(3, sum);
+            Assert.IsInstanceOf<Calculator>(calculator);
         }
 
         private interface ICalculator
         {
-            int Add(int a, int b);
         }
 
         private class Calculator : ICalculator
         {
-            public int Add(int a, int b)
-            {
-                return a + b;
-            }
         }
     }
 }
