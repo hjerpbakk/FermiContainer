@@ -71,6 +71,17 @@ namespace TestHjerpbakk.FermiContainer
             Assert.IsInstanceOf<Calculator>(calculator);
         }
 
+        [Test]
+        public void Resolve_RegisteredPremadeObject_ReturnsTheObject()
+        {
+            var calculator = new Calculator();
+            m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
+
+            var calculator2 = m_fermiContainer.Resolve<ICalculator>();
+
+            Assert.AreSame(calculator, calculator2);
+        }
+
         private interface ICalculator
         {
         }
