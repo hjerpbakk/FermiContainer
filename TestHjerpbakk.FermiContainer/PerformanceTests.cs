@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace TestHjerpbakk.FermiContainer {
 	[TestFixture]
 	public class PerformanceTests {
-		private const int Iterations = 1000000;
+		private const int Iterations = 2000000;
 
 		private IFermiContainer m_fermiContainer;
 
@@ -72,7 +72,7 @@ namespace TestHjerpbakk.FermiContainer {
 			stopwatch.Start();
 
 			for (int i = 0; i < Iterations; i++) {
-				m_fermiContainer.Singleton<ICalculator>();
+				m_fermiContainer.Resolve<ICalculator>();
 			}
 
 			stopwatch.Stop();

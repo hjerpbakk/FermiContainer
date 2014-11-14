@@ -5,18 +5,18 @@ using System.Linq.Expressions;
 
 namespace Hjerpbakk.FermiContainer
 {
-    public class FermiContainer : IFermiContainer
-    {
-		protected readonly Dictionary<Type, Func<object>> Services;
+	public class FermiContainer : IFermiContainer
+	{
+		protected readonly Dictionary<Type, Service> Services;
 
-        public FermiContainer()
-        {
-            Services = new Dictionary<Type, Func<object>>();
-        }
+		public FermiContainer()
+		{
+			Services = new Dictionary<Type, Service>();
+		}
 
 		public void Register<TInterface, TClass>(Func<object> factory) where TClass : TInterface
 		{
-			Services.Add(typeof(TInterface), factory);
+			Services.Add(typeof(TInterface), new Service(factory));
 		}
 
 		public void Register<TInterface, TClass>() where TClass : TInterface
@@ -28,30 +28,45 @@ namespace Hjerpbakk.FermiContainer
 			if (n == 0) {
 				var newExp = Expression.New(typeof(TClass));
 				var lambda = Expression.Lambda<Func<object>>(newExp);
-				Services.Add(typeof(TInterface), lambda.Compile());
+				Services.Add(typeof(TInterface), new Service(lambda.Compile()));
 				return;
 			}
 
 			var parameters = new Func<object>[n];
 			for (int i = 0; i < n; i++) {
 				var type = neededParameters[i].ParameterType;
-				parameters[i] = () => Services[type]();
+				parameters[i] = () => Services[type].Factory();
 			}
 
-			Services.Add(typeof(TInterface), () => ctor.Invoke(parameters.Select(p => p()).ToArray()));
-        }
+			Services.Add(typeof(TInterface), new Service(() => ctor.Invoke(parameters.Select(p => p()).ToArray())));
+		}
 
-        public TInterface Resolve<TInterface>() where TInterface : class
-        {
-            return (TInterface)Services[typeof(TInterface)]();
-        }
+		public TInterface Resolve<TInterface>() where TInterface : class
+		{
+			return (TInterface)Services[typeof(TInterface)].Factory();
+		}
 
-        public TInterface Singleton<TInterface>() where TInterface : class
-        {
-			var value = (TInterface)Services[typeof(TInterface)]();
-			Services[typeof(TInterface)] = () => value;
+		public TInterface Singleton<TInterface>() where TInterface : class
+		{
+			var service = Services[typeof(TInterface)];
+			var value = (TInterface)service.Factory();; 
+			if (service.IsSingleton) {
+				return value;
+			}
+
+			service.IsSingleton = true;
+			service.Factory = () => value;
 			return value;
-        }
-    }
+		}
+
+		protected class Service {
+			public bool IsSingleton;
+			public Func<object> Factory;
+
+			public Service(Func<object> factory) {
+				Factory = factory;
+			}
+		}
+	}
 }
 
