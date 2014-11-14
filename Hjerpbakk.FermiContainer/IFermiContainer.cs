@@ -12,7 +12,7 @@ namespace Hjerpbakk.FermiContainer
         /// </summary>
         /// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
         /// <typeparam name="TClass">The implementation of the interface.</typeparam>
-        void Register<TInterface, TClass>() where TClass : TInterface, new();
+		void Register<TInterface, TClass>() where TClass : TInterface;
 
 		/// <summary>
 		/// Registers a class in the container using a factory method.

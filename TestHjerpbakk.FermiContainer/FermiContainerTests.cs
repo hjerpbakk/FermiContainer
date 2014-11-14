@@ -83,7 +83,7 @@ namespace TestHjerpbakk.FermiContainer
         }
 
 		[Test]
-		public void Register_ComplexClass_CanBeResolved()
+		public void Register_ComplexClassWithFactory_CanBeResolved()
 		{
 			m_fermiContainer.Register<ICalculator, Calculator>();
 			m_fermiContainer.Register<IComplex, ComplexClass>(() => new ComplexClass(m_fermiContainer.Resolve<ICalculator>()));
@@ -91,6 +91,29 @@ namespace TestHjerpbakk.FermiContainer
 			var complexInstance = m_fermiContainer.Resolve<IComplex>();
 
 			Assert.IsInstanceOf<IComplex>(complexInstance);
+		}
+
+		[Test]
+		public void Register_ComplexClass_CanBeResolved()
+		{
+			m_fermiContainer.Register<ICalculator, Calculator>();
+			m_fermiContainer.Register<IComplex, ComplexClass>();
+
+			var complexInstance = m_fermiContainer.Resolve<IComplex>();
+
+			Assert.IsInstanceOf<IComplex>(complexInstance);
+		}
+
+		[Test]
+		public void Register_EvenMoreComplexClass_CanBeResolved()
+		{
+			m_fermiContainer.Register<IEvenMoreComplex, EvenMoreComplex>();
+			m_fermiContainer.Register<ICalculator, Calculator>();
+			m_fermiContainer.Register<IComplex, ComplexClass>();
+
+			var complexInstance = m_fermiContainer.Resolve<IEvenMoreComplex>();
+
+			Assert.IsInstanceOf<IEvenMoreComplex>(complexInstance);
 		}
     }
 
@@ -105,6 +128,14 @@ namespace TestHjerpbakk.FermiContainer
 
 	public class ComplexClass : IComplex {
 		public ComplexClass(ICalculator calculator) {
+		}
+	}
+
+	public interface IEvenMoreComplex {
+	}
+
+	public class EvenMoreComplex : IEvenMoreComplex {
+		public EvenMoreComplex(IComplex complex, ICalculator calculator) {
 		}
 	}
 }

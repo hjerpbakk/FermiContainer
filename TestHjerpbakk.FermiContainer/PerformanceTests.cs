@@ -78,6 +78,24 @@ namespace TestHjerpbakk.FermiContainer {
 			stopwatch.Stop();
 			Console.WriteLine("Pre constructed: " + stopwatch.ElapsedMilliseconds);
 		}
+
+		[Test]
+		public void ComplexClasses()
+		{
+			m_fermiContainer.Register<IEvenMoreComplex, EvenMoreComplex>();
+			m_fermiContainer.Register<ICalculator, Calculator>();
+			m_fermiContainer.Register<IComplex, ComplexClass>();
+
+			var stopwatch = new Stopwatch();
+			stopwatch.Start();
+
+			for (int i = 0; i < Iterations; i++) {
+				m_fermiContainer.Resolve<IEvenMoreComplex>();
+			}
+
+			stopwatch.Stop();
+			Console.WriteLine("Complex classes: " + stopwatch.ElapsedMilliseconds);
+		}
 	}
 }
 

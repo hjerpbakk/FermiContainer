@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
@@ -18,9 +19,26 @@ namespace Hjerpbakk.FermiContainer
 			Services.Add(typeof(TInterface), factory);
 		}
 
-        public void Register<TInterface, TClass>() where TClass : TInterface, new()
-        {
-			Services.Add(typeof(TInterface), () => new TClass ());
+		public void Register<TInterface, TClass>() where TClass : TInterface
+		{
+			//Services.Add(typeof(TInterface), () => new TClass());
+			// TODO: Optimalisere for parameterløs?
+			var ctor = typeof(TClass).GetConstructors()[0];
+			var neededParameters = ctor.GetParameters();
+			var n = neededParameters.Length;
+
+//			if (n == 0) {
+//				Services.Add(typeof(TInterface), () => ctor.Invoke(null));
+//				return;
+//			}
+
+			var parameters = new Func<object>[n];
+			for (int i = 0; i < n; i++) {
+				var type = neededParameters[i].ParameterType;
+				parameters[i] = () => Services[type]();
+			}
+
+			Services.Add(typeof(TInterface), () => ctor.Invoke(parameters.Select(p => p()).ToArray()));
         }
 
         public TInterface Resolve<TInterface>() where TInterface : class
