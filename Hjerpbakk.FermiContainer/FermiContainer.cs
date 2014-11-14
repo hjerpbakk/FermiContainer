@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Hjerpbakk.FermiContainer
 {
@@ -19,7 +20,7 @@ namespace Hjerpbakk.FermiContainer
 
         public void Register<TInterface, TClass>() where TClass : TInterface, new()
         {
-            Services.Add(typeof(TInterface), () => new TClass ());
+			Services.Add(typeof(TInterface), () => new TClass ());
         }
 
         public TInterface Resolve<TInterface>() where TInterface : class

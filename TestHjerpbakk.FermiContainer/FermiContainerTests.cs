@@ -92,20 +92,20 @@ namespace TestHjerpbakk.FermiContainer
 
 			Assert.IsInstanceOf<IComplex>(complexInstance);
 		}
-
-        private interface ICalculator {
-        }
-
-        private class Calculator : ICalculator {
-        }
-
-		private interface IComplex {
-		}
-
-		private class ComplexClass : IComplex {
-			public ComplexClass(ICalculator calculator) {
-			}
-		}
     }
+
+	public interface ICalculator {
+	}
+
+	public class Calculator : ICalculator {
+	}
+
+	public interface IComplex {
+	}
+
+	public class ComplexClass : IComplex {
+		public ComplexClass(ICalculator calculator) {
+		}
+	}
 }
 
