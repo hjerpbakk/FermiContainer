@@ -21,16 +21,16 @@ namespace Hjerpbakk.FermiContainer
 
 		public void Register<TInterface, TClass>() where TClass : TInterface
 		{
-			//Services.Add(typeof(TInterface), () => new TClass());
-			// TODO: Optimalisere for parameterløs?
 			var ctor = typeof(TClass).GetConstructors()[0];
 			var neededParameters = ctor.GetParameters();
 			var n = neededParameters.Length;
 
-//			if (n == 0) {
-//				Services.Add(typeof(TInterface), () => ctor.Invoke(null));
-//				return;
-//			}
+			if (n == 0) {
+				var newExp = Expression.New(typeof(TClass));
+				var lambda = Expression.Lambda<Func<object>>(newExp);
+				Services.Add(typeof(TInterface), lambda.Compile());
+				return;
+			}
 
 			var parameters = new Func<object>[n];
 			for (int i = 0; i < n; i++) {
