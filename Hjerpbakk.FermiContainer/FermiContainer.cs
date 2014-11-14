@@ -5,54 +5,33 @@ namespace Hjerpbakk.FermiContainer
 {
     public class FermiContainer : IFermiContainer
     {
-        private readonly Dictionary<Type, Func<object>> m_services;
-        private readonly Dictionary<Type, Lazy<object>> m_singletons;
+		protected readonly Dictionary<Type, Func<object>> Services;
 
         public FermiContainer()
         {
-            m_services = new Dictionary<Type, Func<object>>();
-            m_singletons = new Dictionary<Type, Lazy<object>>();
+            Services = new Dictionary<Type, Func<object>>();
         }
 
-        public void Register<TInterface, TClass>(Func<object> ctor) where TClass : TInterface
-        {
-            var type = typeof(TInterface);
-            if (m_services.ContainsKey(type))
-            {
-                m_services[type] = ctor;
-                return;
-            }
-
-            m_services.Add(type, ctor);
-        }
-
+		public void Register<TInterface, TClass>(Func<object> factory) where TClass : TInterface
+		{
+			Services.Add(typeof(TInterface), factory);
+		}
 
         public void Register<TInterface, TClass>() where TClass : TInterface, new()
         {
-            var type = typeof(TInterface);
-            Func<object> ctor = () => new TClass();
-            if (m_services.ContainsKey(type))
-            {
-                m_services[type] = ctor;
-                return;
-            }
-
-            m_services.Add(type, ctor);
+            Services.Add(typeof(TInterface), () => new TClass ());
         }
 
         public TInterface Resolve<TInterface>() where TInterface : class
         {
-            return (TInterface)m_services[typeof(TInterface)]();
+            return (TInterface)Services[typeof(TInterface)]();
         }
 
         public TInterface Singleton<TInterface>() where TInterface : class
         {
-            var type = typeof(TInterface);
-            if (!m_singletons.ContainsKey(type)) {
-                m_singletons.Add(type, new Lazy<object>(m_services[typeof(TInterface)]));
-            }
-
-            return (TInterface)m_singletons[typeof(TInterface)].Value;
+			var value = (TInterface)Services[typeof(TInterface)]();
+			Services[typeof(TInterface)] = () => value;
+			return value;
         }
     }
 }

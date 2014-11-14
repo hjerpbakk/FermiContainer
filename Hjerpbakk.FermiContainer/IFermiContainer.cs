@@ -14,14 +14,14 @@ namespace Hjerpbakk.FermiContainer
         /// <typeparam name="TClass">The implementation of the interface.</typeparam>
         void Register<TInterface, TClass>() where TClass : TInterface, new();
 
-        /// <summary>
-        /// Registers a class in the container using a factory method.
-        /// Useful for classes without a default constructor.
-        /// </summary>
-        /// <param name="ctor">The factory method to use.</param>
-        /// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
-        /// <typeparam name="TClass">The implementation of the interface.</typeparam>
-        void Register<TInterface, TClass>(Func<object> ctor) where TClass : TInterface;
+		/// <summary>
+		/// Registers a class in the container using a factory method.
+		/// Useful for classes without a default constructor.
+		/// </summary>
+		/// <param name="factory">The factory method to use.</param>
+		/// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
+		/// <typeparam name="TClass">The implementation of the interface.</typeparam>
+		void Register<TInterface, TClass>(Func<object> factory) where TClass : TInterface;
 
         /// <summary>
         /// Returns an implementation of the given interface.

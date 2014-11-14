@@ -82,13 +82,30 @@ namespace TestHjerpbakk.FermiContainer
             Assert.AreSame(calculator, calculator2);
         }
 
-        private interface ICalculator
-        {
+		[Test]
+		public void Register_ComplexClass_CanBeResolved()
+		{
+			m_fermiContainer.Register<ICalculator, Calculator>();
+			m_fermiContainer.Register<IComplex, ComplexClass>(() => new ComplexClass(m_fermiContainer.Resolve<ICalculator>()));
+
+			var complexInstance = m_fermiContainer.Resolve<IComplex>();
+
+			Assert.IsInstanceOf<IComplex>(complexInstance);
+		}
+
+        private interface ICalculator {
         }
 
-        private class Calculator : ICalculator
-        {
+        private class Calculator : ICalculator {
         }
+
+		private interface IComplex {
+		}
+
+		private class ComplexClass : IComplex {
+			public ComplexClass(ICalculator calculator) {
+			}
+		}
     }
 }
 
