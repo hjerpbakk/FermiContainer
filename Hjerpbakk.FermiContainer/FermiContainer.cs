@@ -43,7 +43,6 @@ namespace Hjerpbakk.FermiContainer {
 		public TInterface Singleton<TInterface>() where TInterface : class {
 			var service = Services[typeof(TInterface)];
 			var value = (TInterface)service.Factory();
-			; 
 			if (service.IsSingleton) {
 				return value;
 			}
