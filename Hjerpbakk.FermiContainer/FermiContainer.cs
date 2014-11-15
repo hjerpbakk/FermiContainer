@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 
 namespace Hjerpbakk.FermiContainer {
 	public class FermiContainer : IFermiContainer {
@@ -42,18 +43,17 @@ namespace Hjerpbakk.FermiContainer {
 
 		public TInterface Singleton<TInterface>() where TInterface : class {
 			var service = Services[typeof(TInterface)];
-			var value = (TInterface)service.Factory();
-			if (service.IsSingleton) {
+			if (Interlocked.Exchange(ref service.SingletonInitialized, 1) == 0) {
+				var value = (TInterface)service.Factory();
+				service.Factory = () => value;
 				return value;
 			}
 
-			service.IsSingleton = true;
-			service.Factory = () => value;
-			return value;
+			return (TInterface)service.Factory();
 		}
 
 		protected class Service {
-			public bool IsSingleton;
+			public int SingletonInitialized;
 			public Func<object> Factory;
 
 			public Service(Func<object> factory) {
