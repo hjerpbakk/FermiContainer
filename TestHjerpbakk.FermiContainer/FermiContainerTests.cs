@@ -122,6 +122,14 @@ namespace TestHjerpbakk.FermiContainer {
 			IsInstanceOf<ClassWithoutInterface>(classWithoutInterface);
 		}
 
+		[Test]
+		public void DefaultInstance_Used_IsOnlyOneInstance() {
+			var instance = Hjerpbakk.FermiContainer.FermiContainer.DefaultInstance;
+
+			IsInstanceOf<IFermiContainer>(instance);
+			Assert.AreSame(instance, Hjerpbakk.FermiContainer.FermiContainer.DefaultInstance);
+		}
+
 		private void IsInstanceOf<TClass>(object theObject) {
 			Assert.IsTrue(theObject is TClass);
 		}
