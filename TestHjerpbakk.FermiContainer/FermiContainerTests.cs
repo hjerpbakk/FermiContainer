@@ -19,7 +19,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var calculator = m_fermiContainer.Resolve<ICalculator>();
 
-			Assert.IsInstanceOf<Calculator>(calculator);
+			IsInstanceOf<Calculator>(calculator);
 		}
 
 		[Test]
@@ -60,7 +60,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var calculator = m_fermiContainer.Resolve<ICalculator>();
 
-			Assert.IsInstanceOf<Calculator>(calculator);
+			IsInstanceOf<Calculator>(calculator);
 		}
 
 		[Test]
@@ -80,7 +80,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var complexInstance = m_fermiContainer.Resolve<IComplex>();
 
-			Assert.IsInstanceOf<IComplex>(complexInstance);
+			IsInstanceOf<IComplex>(complexInstance);
 		}
 
 		[Test]
@@ -90,7 +90,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var complexInstance = m_fermiContainer.Resolve<IComplex>();
 
-			Assert.IsInstanceOf<IComplex>(complexInstance);
+			IsInstanceOf<IComplex>(complexInstance);
 		}
 
 		[Test]
@@ -102,7 +102,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var complexInstance = m_fermiContainer.Resolve<IEvenMoreComplex>();
 
-			Assert.IsInstanceOf<IEvenMoreComplex>(complexInstance);
+			IsInstanceOf<IEvenMoreComplex>(complexInstance);
 		}
 
 		[Test]
@@ -119,7 +119,11 @@ namespace TestHjerpbakk.FermiContainer {
 
 			var classWithoutInterface = m_fermiContainer.Resolve<ClassWithoutInterface>();
 
-			Assert.IsInstanceOf<ClassWithoutInterface>(classWithoutInterface);
+			IsInstanceOf<ClassWithoutInterface>(classWithoutInterface);
+		}
+
+		private void IsInstanceOf<TClass>(object theObject) {
+			Assert.IsTrue(theObject is TClass);
 		}
 	}
 
