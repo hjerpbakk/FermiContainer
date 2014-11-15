@@ -3,24 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Hjerpbakk.FermiContainer
-{
-	public class FermiContainer : IFermiContainer
-	{
+namespace Hjerpbakk.FermiContainer {
+	public class FermiContainer : IFermiContainer {
 		protected readonly Dictionary<Type, Service> Services;
 
-		public FermiContainer()
-		{
+		public FermiContainer() {
 			Services = new Dictionary<Type, Service>();
 		}
 
-		public void Register<TInterface, TClass>(Func<object> factory) where TClass : TInterface
-		{
-			Services.Add(typeof(TInterface), new Service(factory));
-		}
-
-		public void Register<TInterface, TClass>() where TClass : TInterface
-		{
+		public void Register<TInterface, TClass>() where TClass : class, TInterface {
 			var type = typeof(TClass);
 			var ctor = type.GetConstructors()[0];
 			var neededParameters = ctor.GetParameters();
@@ -37,15 +28,22 @@ namespace Hjerpbakk.FermiContainer
 			Services.Add(typeof(TInterface), new Service(newAsLambda.Compile()));
 		}
 
-		public TInterface Resolve<TInterface>() where TInterface : class
-		{
+		public void Register<TClass>() where TClass : class {
+			Register<TClass, TClass>();
+		}
+
+		public void Register<TInterface, TClass>(Func<object> factory) where TClass : class, TInterface {
+			Services.Add(typeof(TInterface), new Service(factory));
+		}
+
+		public TInterface Resolve<TInterface>() where TInterface : class {
 			return (TInterface)Services[typeof(TInterface)].Factory();
 		}
 
-		public TInterface Singleton<TInterface>() where TInterface : class
-		{
+		public TInterface Singleton<TInterface>() where TInterface : class {
 			var service = Services[typeof(TInterface)];
-			var value = (TInterface)service.Factory();; 
+			var value = (TInterface)service.Factory();
+			; 
 			if (service.IsSingleton) {
 				return value;
 			}

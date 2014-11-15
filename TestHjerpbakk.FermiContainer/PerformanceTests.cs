@@ -11,16 +11,13 @@ namespace TestHjerpbakk.FermiContainer {
 		private IFermiContainer m_fermiContainer;
 
 		[SetUp]
-		public void Init()
-		{
+		public void Init() {
 			m_fermiContainer = new Hjerpbakk.FermiContainer.FermiContainer();
 		}
 
 		[Test]
-		public void NewOperator()
-		{
-			var time = Time(() =>
-			{
+		public void NewOperator() {
+			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
 					new Calculator();
 				}
@@ -30,12 +27,10 @@ namespace TestHjerpbakk.FermiContainer {
 		}
 
 		[Test]
-		public void NoConstructorArguments()
-		{
+		public void NoConstructorArguments() {
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var time = Time(() =>
-			{
+			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
 					m_fermiContainer.Resolve<ICalculator>();
 				}
@@ -45,12 +40,10 @@ namespace TestHjerpbakk.FermiContainer {
 		}
 
 		[Test]
-		public void Singleton()
-		{
+		public void Singleton() {
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var time = Time(() =>
-			{
+			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
 					m_fermiContainer.Singleton<ICalculator>();
 				}
@@ -60,13 +53,11 @@ namespace TestHjerpbakk.FermiContainer {
 		}
 
 		[Test]
-		public void PreConstructed()
-		{
+		public void PreConstructed() {
 			var calculator = new Calculator();
 			m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
 
-			var time = Time(() =>
-			{
+			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
 					m_fermiContainer.Resolve<ICalculator>();
 				}
@@ -76,14 +67,13 @@ namespace TestHjerpbakk.FermiContainer {
 		}
 
 		[Test]
-		public void ComplexClasses()
-		{
+		public void ComplexClasses() {
 			m_fermiContainer.Register<IEvenMoreComplex, EvenMoreComplex>();
 			m_fermiContainer.Register<ICalculator, Calculator>();
 			m_fermiContainer.Register<IComplex, ComplexClass>();
+			m_fermiContainer.Register<ClassWithoutInterface>();
 
-			var time = Time(() =>
-			{
+			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
 					m_fermiContainer.Resolve<IEvenMoreComplex>();
 				}
@@ -92,8 +82,7 @@ namespace TestHjerpbakk.FermiContainer {
 			Console.WriteLine("Complex classes: " + time);
 		}
 
-		public static long Time(Action action)
-		{
+		public static long Time(Action action) {
 			Stopwatch stopwatch = Stopwatch.StartNew();
 			action();
 			stopwatch.Stop();
