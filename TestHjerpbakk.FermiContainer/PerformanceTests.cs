@@ -1,12 +1,12 @@
 ﻿using System;
-using NUnit.Framework;
-using Hjerpbakk.FermiContainer;
 using System.Diagnostics;
+using Hjerpbakk.FermiContainer;
+using NUnit.Framework;
 
 namespace TestHjerpbakk.FermiContainer {
 	[TestFixture]
 	public class PerformanceTests {
-		private const int Iterations = 2000000;
+		private const int Iterations = 20000000;
 
 		private IFermiContainer m_fermiContainer;
 
@@ -19,15 +19,14 @@ namespace TestHjerpbakk.FermiContainer {
 		[Test]
 		public void NewOperator()
 		{
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
+			var time = Time(() =>
+			{
+				for (int i = 0; i < Iterations; i++) {
+					new Calculator();
+				}
+			});
 
-			for (int i = 0; i < Iterations; i++) {
-				new Calculator();
-			}
-
-			stopwatch.Stop();
-			Console.WriteLine("Baseline: " + stopwatch.ElapsedMilliseconds);
+			Console.WriteLine("Baseline: " + time);
 		}
 
 		[Test]
@@ -35,15 +34,14 @@ namespace TestHjerpbakk.FermiContainer {
 		{
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
-
-			for (int i = 0; i < Iterations; i++) {
-				m_fermiContainer.Resolve<ICalculator>();
-			}
-
-			stopwatch.Stop();
-			Console.WriteLine("No constructor args: " + stopwatch.ElapsedMilliseconds);
+			var time = Time(() =>
+			{
+				for (int i = 0; i < Iterations; i++) {
+					m_fermiContainer.Resolve<ICalculator>();
+				}
+			});
+					
+			Console.WriteLine("No constructor args: " + time);
 		}
 
 		[Test]
@@ -51,15 +49,14 @@ namespace TestHjerpbakk.FermiContainer {
 		{
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
-
-			for (int i = 0; i < Iterations; i++) {
-				m_fermiContainer.Singleton<ICalculator>();
-			}
-
-			stopwatch.Stop();
-			Console.WriteLine("Singleton: " + stopwatch.ElapsedMilliseconds);
+			var time = Time(() =>
+			{
+				for (int i = 0; i < Iterations; i++) {
+					m_fermiContainer.Singleton<ICalculator>();
+				}
+			});
+					
+			Console.WriteLine("Singleton: " + time);
 		}
 
 		[Test]
@@ -68,15 +65,14 @@ namespace TestHjerpbakk.FermiContainer {
 			var calculator = new Calculator();
 			m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
 
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
-
-			for (int i = 0; i < Iterations; i++) {
-				m_fermiContainer.Resolve<ICalculator>();
-			}
-
-			stopwatch.Stop();
-			Console.WriteLine("Pre constructed: " + stopwatch.ElapsedMilliseconds);
+			var time = Time(() =>
+			{
+				for (int i = 0; i < Iterations; i++) {
+					m_fermiContainer.Resolve<ICalculator>();
+				}
+			});
+					
+			Console.WriteLine("Pre constructed: " + time);
 		}
 
 		[Test]
@@ -86,15 +82,22 @@ namespace TestHjerpbakk.FermiContainer {
 			m_fermiContainer.Register<ICalculator, Calculator>();
 			m_fermiContainer.Register<IComplex, ComplexClass>();
 
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
+			var time = Time(() =>
+			{
+				for (int i = 0; i < Iterations; i++) {
+					m_fermiContainer.Resolve<IEvenMoreComplex>();
+				}
+			});
+					
+			Console.WriteLine("Complex classes: " + time);
+		}
 
-			for (int i = 0; i < Iterations; i++) {
-				m_fermiContainer.Resolve<IEvenMoreComplex>();
-			}
-
+		public static long Time(Action action)
+		{
+			Stopwatch stopwatch = Stopwatch.StartNew();
+			action();
 			stopwatch.Stop();
-			Console.WriteLine("Complex classes: " + stopwatch.ElapsedMilliseconds);
+			return stopwatch.ElapsedMilliseconds;
 		}
 	}
 }
