@@ -10,8 +10,8 @@
     <AssemblyName>FermiContainer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
-    <ReleaseVersion>1.0</ReleaseVersion>
-    <Description>Even simpler than the simplest IoC-container, FermiContainer makes IoC easy for everyone.</Description>
+    <ReleaseVersion>1.1</ReleaseVersion>
+    <Description>FermiContainer supports the registration of interfaces and implementing classes. Through constructor injection, the dependencies known to the container are automatically resolved. No attributes or XML configuration are needed. This is simplicity at its best and FermiContainer is truly a C# IoC container for the rest of us.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
