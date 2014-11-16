@@ -6,6 +6,7 @@ using System.Threading;
 namespace Hjerpbakk.FermiContainer {
 	public class FermiContainer : IFermiContainer {
 		private static readonly Lazy<IFermiContainer> defaultInstance;
+
 		protected readonly Dictionary<Type, Service> Services;
 
 		static FermiContainer() {
