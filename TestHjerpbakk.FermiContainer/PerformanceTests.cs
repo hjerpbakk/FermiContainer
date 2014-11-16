@@ -17,11 +17,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 		[Test]
 		public void NewOperator() {
-			var time = Time(() => {
-				for (int i = 0; i < Iterations; i++) {
-					new Calculator();
-				}
-			});
+            var time = Time(() => new Calculator());
 
 			Console.WriteLine("Baseline: " + time);
 		}
@@ -30,11 +26,7 @@ namespace TestHjerpbakk.FermiContainer {
 		public void NoConstructorArguments() {
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var time = Time(() => {
-				for (int i = 0; i < Iterations; i++) {
-					m_fermiContainer.Resolve<ICalculator>();
-				}
-			});
+            var time = Time(() => m_fermiContainer.Resolve<ICalculator>());
 					
 			Console.WriteLine("No constructor args: " + time);
 		}
@@ -43,11 +35,7 @@ namespace TestHjerpbakk.FermiContainer {
 		public void Singleton() {
 			m_fermiContainer.Register<ICalculator, Calculator>();
 
-			var time = Time(() => {
-				for (int i = 0; i < Iterations; i++) {
-					m_fermiContainer.Singleton<ICalculator>();
-				}
-			});
+            var time = Time(() => m_fermiContainer.Singleton<ICalculator>());
 					
 			Console.WriteLine("Singleton: " + time);
 		}
@@ -57,11 +45,7 @@ namespace TestHjerpbakk.FermiContainer {
 			var calculator = new Calculator();
 			m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
 
-			var time = Time(() => {
-				for (int i = 0; i < Iterations; i++) {
-					m_fermiContainer.Resolve<ICalculator>();
-				}
-			});
+            var time = Time(() => m_fermiContainer.Resolve<ICalculator>());
 					
 			Console.WriteLine("Pre constructed: " + time);
 		}
@@ -73,18 +57,16 @@ namespace TestHjerpbakk.FermiContainer {
 			m_fermiContainer.Register<IComplex, ComplexClass>();
 			m_fermiContainer.Register<ClassWithoutInterface>();
 
-			var time = Time(() => {
-				for (int i = 0; i < Iterations; i++) {
-					m_fermiContainer.Resolve<IEvenMoreComplex>();
-				}
-			});
-					
+            var time = Time(() => m_fermiContainer.Resolve<IEvenMoreComplex>());
 			Console.WriteLine("Complex classes: " + time);
 		}
 
 		public static long Time(Action action) {
 			Stopwatch stopwatch = Stopwatch.StartNew();
-			action();
+            for (int i = 0; i < Iterations; i++) {
+                action();
+            }
+			
 			stopwatch.Stop();
 			return stopwatch.ElapsedMilliseconds;
 		}
