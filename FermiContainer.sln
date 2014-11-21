@@ -70,7 +70,7 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Hjerpbakk.FermiContainer\Hjerpbakk.FermiContainer.csproj
-		description = Even simpler than the simplest IoC-container, FermiContainer makes IoC easy for everyone.
-		version = 1.0
+		description = FermiContainer supports the registration of interfaces and implementing classes. Through constructor injection, the dependencies known to the container are automatically resolved. No attributes or XML configuration are needed. This is simplicity at its best and FermiContainer is truly a C# IoC container for the rest of us.
+		version = 1.1
 	EndGlobalSection
 EndGlobal

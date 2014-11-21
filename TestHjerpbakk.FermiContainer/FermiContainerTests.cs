@@ -135,26 +135,20 @@ namespace TestHjerpbakk.FermiContainer {
 		}
 	}
 
-	public interface ICalculator {
-	}
+	public interface ICalculator {}
 
-	public class Calculator : ICalculator {
-	}
+	public class Calculator : ICalculator {}
 
-	public interface IComplex {
-	}
+	public interface IComplex {}
 
 	public class ComplexClass : IComplex {
-		public ComplexClass(ICalculator calculator) {
-		}
+		public ComplexClass(ICalculator calculator) {}
 	}
 
-	public interface IEvenMoreComplex {
-	}
+	public interface IEvenMoreComplex {}
 
 	public class EvenMoreComplex : IEvenMoreComplex {
-		public EvenMoreComplex(IComplex complex, ICalculator calculator, ClassWithoutInterface classWithoutInterface) {
-		}
+		public EvenMoreComplex(IComplex complex, ICalculator calculator, ClassWithoutInterface classWithoutInterface) {}
 	}
 
 	public class ClassWithoutInterface {}
