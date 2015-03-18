@@ -6,9 +6,9 @@ using NUnit.Framework;
 namespace TestHjerpbakk.FermiContainer {
 	[TestFixture]
 	public class PerformanceTests {
-		private const int Iterations = 20000000;
+		const int Iterations = 20000000;
 
-		private IFermiContainer m_fermiContainer;
+		IFermiContainer m_fermiContainer;
 
 		[SetUp]
 		public void Init() {
@@ -19,6 +19,7 @@ namespace TestHjerpbakk.FermiContainer {
 		public void NewOperator() {
 			var time = Time(() => {
 				for (int i = 0; i < Iterations; i++) {
+					// Analysis disable once ObjectCreationAsStatement
 					new Calculator();
 				}
 			});
