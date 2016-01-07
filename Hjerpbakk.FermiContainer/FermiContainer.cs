@@ -67,7 +67,7 @@ namespace Hjerpbakk.FermiContainer {
 			Register<TClass, TClass>();
 		}
 
-		public void Register<TInterface, TClass>(Func<object> factory) where TClass : class, TInterface {
+		public void Register<TInterface>(Func<object> factory) {
 			Services.Add(typeof(TInterface), new Service(factory));
 		}
 
@@ -123,7 +123,8 @@ namespace Hjerpbakk.FermiContainer {
 		/// <param name="factory">The factory method to use.</param>
 		/// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
 		/// <typeparam name="TClass">The implementing class of the interface.</typeparam>
-		void Register<TInterface, TClass>(Func<object> factory) where TClass : class, TInterface;
+		// Analysis disable once UnusedTypeParameter
+		void Register<TInterface>(Func<object> factory);
 
 		/// <summary>
 		/// Returns the registered implementing class of the given interface.

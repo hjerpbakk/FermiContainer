@@ -56,7 +56,7 @@ namespace TestHjerpbakk.FermiContainer {
 
 		[Test]
 		public void Resolve_ClassRegisteredWithCustomCtor_ReturnsNewObject() {
-			m_fermiContainer.Register<ICalculator, Calculator>(() => new Calculator());
+			m_fermiContainer.Register<ICalculator>(() => new Calculator());
 
 			var calculator = m_fermiContainer.Resolve<ICalculator>();
 
@@ -66,7 +66,7 @@ namespace TestHjerpbakk.FermiContainer {
 		[Test]
 		public void Resolve_RegisteredPremadeObject_ReturnsTheObject() {
 			var calculator = new Calculator();
-			m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
+			m_fermiContainer.Register<ICalculator>(() => calculator);
 
 			var calculator2 = m_fermiContainer.Resolve<ICalculator>();
 
@@ -76,7 +76,7 @@ namespace TestHjerpbakk.FermiContainer {
 		[Test]
 		public void Register_ComplexClassWithFactory_CanBeResolved() {
 			m_fermiContainer.Register<ICalculator, Calculator>();
-			m_fermiContainer.Register<IComplex, ComplexClass>(() => new ComplexClass(m_fermiContainer.Resolve<ICalculator>()));
+			m_fermiContainer.Register<IComplex>(() => new ComplexClass(m_fermiContainer.Resolve<ICalculator>()));
 
 			var complexInstance = m_fermiContainer.Resolve<IComplex>();
 

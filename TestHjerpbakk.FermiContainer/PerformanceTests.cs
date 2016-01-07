@@ -43,7 +43,7 @@ namespace TestHjerpbakk.FermiContainer {
 		[Test]
 		public void PreConstructed() {
 			var calculator = new Calculator();
-			m_fermiContainer.Register<ICalculator, Calculator>(() => calculator);
+			m_fermiContainer.Register<ICalculator>(() => calculator);
 
             var time = Time(() => m_fermiContainer.Resolve<ICalculator>());
 					
