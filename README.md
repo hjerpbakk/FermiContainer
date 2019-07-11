@@ -1,6 +1,8 @@
 FermiContainer (C#)
 ==============
 
+[![Latest version](https://img.shields.io/nuget/v/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/) [![Downloads from NuGet](https://img.shields.io/nuget/dt/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/)
+
 <img align="left" src="https://github.com/Sankra/FermiContainer/blob/master/logo%402x.png" width="128" height="128">
 
 Even simpler than the simplest IoC-container, <b>FermiContainer</b> makes IoC easy for everyone. 
