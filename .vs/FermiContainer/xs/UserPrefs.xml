@@ -1,0 +1,46 @@
+﻿<Properties StartupConfiguration="{DB956C4D-32E0-4C22-A32F-4E3BCB626A3F}|Default">
+  <MonoDevelop.Ide.ItemProperties.FermiContainer.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FermiContainer.Tests/Tests.cs">
+    <Files>
+      <File FileName="FermiContainer.iOS.Tests/UnitTestAppDelegate.cs" Line="1" Column="1" />
+      <File FileName="FermiContainer.iOS.Tests/FermiContainerTests.cs" Line="3" Column="18" />
+      <File FileName="FermiContainer.Tests/Tests.cs" Line="7" Column="31" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FermiContainer" expanded="True">
+            <Node name="FermiContainer.iOS.Tests" expanded="True" />
+            <Node name="FermiContainer.Tests" expanded="True">
+              <Node name="Tests.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="FermiContainer" expanded="True" selected="True">
+            <Node name="FermiContainer.Tests" expanded="True">
+              <Node name="FermiContainer.Tests" expanded="True">
+                <Node name="Tests" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.FermiContainer.iOS.Tests PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.5E7F8442-AE77-4611-8B28-8CF1E1F6571B">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="L7LP8593LM" TeamId="N3BMHYY53W" />
+  </MonoDevelop.Ide.ItemProperties.FermiContainer.iOS.Tests>
+  <DisabledProjects>
+    <String>TestHjerpbakk.FermiContainer.iOS/TestHjerpbakk.FermiContainer.iOS.csproj</String>
+    <String>TestHjerpbakk.FermiContainer/TestHjerpbakk.FermiContainer.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
