@@ -32,10 +32,16 @@ using System.Threading;
 
 namespace Hjerpbakk.FermiContainer
 {
+    /// <summary>
+    ///  Defines a set of methods used to register services into the service container.
+    /// </summary>
     public class FermiContainer : IFermiContainer
     {
         private static readonly Lazy<IFermiContainer> defaultInstance;
 
+        /// <summary>
+        /// Contains the registered services.
+        /// </summary>
         protected readonly Dictionary<Type, Service> Services;
 
         static FermiContainer()
@@ -43,13 +49,26 @@ namespace Hjerpbakk.FermiContainer
             defaultInstance = new Lazy<IFermiContainer>(() => new FermiContainer());
         }
 
+        /// <summary>
+        /// Default contstructor.
+        /// </summary>
         public FermiContainer()
         {
             Services = new Dictionary<Type, Service>();
         }
 
+        /// <summary>
+        /// The default instance of the container.
+        /// </summary>
         public static IFermiContainer DefaultInstance { get { return defaultInstance.Value; } }
 
+        /// <summary>
+        /// Registers an interface with a given implementing class in the container.
+        /// The first constructor of the implementing class is used, and constructor
+        /// arguments are automatically resolved using the container.
+        /// </summary>
+        /// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
+        /// <typeparam name="TClass">The implementing class of the interface.</typeparam>
         public void Register<TInterface, TClass>() where TClass : class, TInterface
         {
             var type = typeof(TClass);
@@ -69,21 +88,41 @@ namespace Hjerpbakk.FermiContainer
             Services.Add(typeof(TInterface), new Service(newAsLambda.Compile()));
         }
 
+        /// <summary>
+        /// Registers a class without an interface in the container.
+        /// </summary>
+        /// <typeparam name="TClass">The class to be registered.</typeparam>
         public void Register<TClass>() where TClass : class
         {
             Register<TClass, TClass>();
         }
 
+        /// <summary>
+        /// Registers an implementing class in the container using a factory method.
+        /// Use this if your implementation has dependencies not present
+        /// in the container.
+        /// </summary>
+        /// <param name="factory">The factory method to use.</param>
+        /// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
         public void Register<TInterface>(Func<object> factory)
         {
             Services.Add(typeof(TInterface), new Service(factory));
         }
 
+        /// <summary>
+        /// Returns the registered implementing class of the given interface.
+        /// </summary>
+        /// <typeparam name="TInterface">The interface from which to get the implementation.</typeparam>
         public TInterface Resolve<TInterface>() where TInterface : class
         {
             return (TInterface)Services[typeof(TInterface)].Factory();
         }
 
+        /// <summary>
+        /// Returns the registered implementing class of the given interface as a singleton.
+        /// This method will always return the same instance for a given interface.
+        /// </summary>
+        /// <typeparam name="TInterface">The interface from which to get the implementation.</typeparam>
         public TInterface Singleton<TInterface>() where TInterface : class
         {
             var service = Services[typeof(TInterface)];
@@ -97,11 +136,25 @@ namespace Hjerpbakk.FermiContainer
             return (TInterface)service.Factory();
         }
 
+        /// <summary>
+        /// The definition of a registerable service.
+        /// </summary>
         protected class Service
         {
+            /// <summary>
+            /// Whether a singleton has already been initialized.
+            /// </summary>
             public int SingletonInitialized;
+
+            /// <summary>
+            /// The factory used to create an instance of a registered service.
+            /// </summary>
             public Func<object> Factory;
 
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            /// <param name="factory">The factory used to create an instance of a registered service.</param>
             public Service(Func<object> factory)
             {
                 Factory = factory;
@@ -136,8 +189,6 @@ namespace Hjerpbakk.FermiContainer
         /// </summary>
         /// <param name="factory">The factory method to use.</param>
         /// <typeparam name="TInterface">The interface which the class satisfies.</typeparam>
-        /// <typeparam name="TClass">The implementing class of the interface.</typeparam>
-        // Analysis disable once UnusedTypeParameter
         void Register<TInterface>(Func<object> factory);
 
         /// <summary>

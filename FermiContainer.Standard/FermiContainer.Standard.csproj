@@ -1,14 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ReleaseVersion>1.1</ReleaseVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <ReleaseVersion>1.1.1</ReleaseVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <FileVersion>1.1.1</FileVersion>
+    <PackageVersion>1.1.1</PackageVersion>
     <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <IsPackable>true</IsPackable>
+    <DocumentationFile>bin\Debug\netstandard2.0\FermiContainer.Standard.xml</DocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/Sankra/FermiContainer.git</RepositoryUrl> 
+    <RepositoryType>git</RepositoryType> 
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Authors>Runar Ovesen Hjerpbakk</Authors>
+    <Copyright>© 2014-2020 Runar Ovesen Hjerpbakk</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Owners>Runar Ovesen Hjerpbakk</Owners>
+    <PackageProjectUrl>https://github.com/Sankra/FermiContainer</PackageProjectUrl>
+    <Description>FermiContainer is a simple and easy to use IoC container. It supports registration of interfaces and implementing classes, and through constructor injection the dependencies known to the container are automatically resolved. No attributes or XML configuration are needed. This is simplicity at its best and FermiContainer is truly a C# IoC container for the rest of us.</Description>
+    <Summary>FermiContainer is a simple and easy to use IoC container. It supports registration of interfaces and implementing classes, and through constructor injection the dependencies known to the container are automatically resolved. No attributes or XML configuration are needed. This is simplicity at its best and FermiContainer is truly a C# IoC container for the rest of us.</Summary>
+    <Title>FermiContainer</Title>
+    <PackageId>FermiContainer</PackageId>
+    <tags>IoC DI iOS Android Xamarin Windows .Net5 .NetStandard2.0</tags>
+    <PackageIcon>nuget-logo.png</PackageIcon>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+        <None Include="..\docs\img\nuget-logo.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
 </Project>

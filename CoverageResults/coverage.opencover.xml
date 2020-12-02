@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession>
+  <Summary numSequencePoints="33" visitedSequencePoints="33" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="10" minCyclomaticComplexity="10" visitedClasses="2" numClasses="2" visitedMethods="8" numMethods="8" />
+  <Modules>
+    <Module hash="AA8239D0-ADA9-4FA9-877D-AC6952B9A04A">
+      <ModulePath>FermiContainer.Standard.dll</ModulePath>
+      <ModuleTime>2020-12-02T09:56:28</ModuleTime>
+      <ModuleName>FermiContainer.Standard</ModuleName>
+      <Files>
+        <File uid="1" fullPath="/Users/runarhjerpbakk/projects/FermiContainer/FermiContainer.Standard/FermiContainer.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="30" visitedSequencePoints="30" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="7" numMethods="7" />
+          <FullName>Hjerpbakk.FermiContainer.FermiContainer</FullName>
+          <Methods>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>Hjerpbakk.FermiContainer.IFermiContainer Hjerpbakk.FermiContainer.FermiContainer::get_DefaultInstance()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="2" uspid="63" ordinal="0" sl="63" sc="1" el="63" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="63" ec="1" el="63" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="15" visitedSequencePoints="15" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Hjerpbakk.FermiContainer.FermiContainer::Register()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="13" uspid="74" ordinal="0" sl="74" sc="1" el="74" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="75" ordinal="1" sl="75" sc="1" el="75" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="76" ordinal="2" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="77" ordinal="3" sl="77" sc="1" el="77" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="78" ordinal="4" sl="78" sc="1" el="78" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="36" uspid="79" ordinal="5" sl="79" sc="1" el="79" ec="2" bec="2" bev="2" fileid="1" />
+                <SequencePoint vc="5" uspid="81" ordinal="6" sl="81" sc="1" el="81" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="5" uspid="82" ordinal="7" sl="82" sc="1" el="82" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="5" uspid="83" ordinal="8" sl="83" sc="1" el="83" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="86" ordinal="9" sl="86" sc="1" el="86" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="87" ordinal="10" sl="87" sc="1" el="87" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="13" uspid="88" ordinal="11" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="12" uspid="89" ordinal="12" sl="89" sc="1" el="89" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="2" uspid="97" ordinal="13" sl="97" sc="1" el="97" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="2" uspid="98" ordinal="14" sl="98" sc="1" el="98" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="5" uspid="79" ordinal="1" path="1" offset="246" offsetend="44" sl="79" fileid="1" />
+                <BranchPoint vc="13" uspid="79" ordinal="0" path="0" offset="246" offsetend="251" sl="79" fileid="1" />
+              </BranchPoints>
+              <MethodPoint vc="15" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="74" ec="1" el="98" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="2" visitedSequencePoints="2" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Hjerpbakk.FermiContainer.FermiContainer::Register(System.Func`1&lt;System.Object&gt;)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="3" uspid="109" ordinal="0" sl="109" sc="1" el="109" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="3" uspid="110" ordinal="1" sl="110" sc="1" el="110" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="109" ec="1" el="110" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>TInterface Hjerpbakk.FermiContainer.FermiContainer::Resolve()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="11" uspid="118" ordinal="0" sl="118" sc="1" el="118" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="118" ec="1" el="118" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>TInterface Hjerpbakk.FermiContainer.FermiContainer::Singleton()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="3" uspid="128" ordinal="0" sl="128" sc="1" el="128" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="2" uspid="129" ordinal="1" sl="129" sc="1" el="129" ec="2" bec="2" bev="2" fileid="1" />
+                <SequencePoint vc="1" uspid="131" ordinal="2" sl="131" sc="1" el="131" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="2" uspid="132" ordinal="3" sl="132" sc="1" el="132" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="133" ordinal="4" sl="133" sc="1" el="133" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="136" ordinal="5" sl="136" sc="1" el="136" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="1" uspid="129" ordinal="0" path="0" offset="34" offsetend="36" sl="129" fileid="1" />
+                <BranchPoint vc="1" uspid="129" ordinal="1" path="1" offset="34" offsetend="89" sl="129" fileid="1" />
+              </BranchPoints>
+              <MethodPoint vc="6" uspid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="128" ec="1" el="136" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="2" visitedSequencePoints="2" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Hjerpbakk.FermiContainer.FermiContainer::.cctor()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="2" uspid="49" ordinal="0" sl="49" sc="1" el="49" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="50" ordinal="1" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="49" ec="1" el="50" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Hjerpbakk.FermiContainer.FermiContainer::.ctor()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="14" uspid="55" ordinal="0" sl="55" sc="1" el="55" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="14" uspid="57" ordinal="1" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="14" uspid="58" ordinal="2" sl="58" sc="1" el="58" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="6" offset="6" sc="0" sl="55" ec="1" el="58" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+          <FullName>Hjerpbakk.FermiContainer.FermiContainer/Service</FullName>
+          <Methods>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.Void Hjerpbakk.FermiContainer.FermiContainer/Service::.ctor(System.Func`1&lt;System.Object&gt;)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="16" uspid="158" ordinal="0" sl="158" sc="1" el="158" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="16" uspid="160" ordinal="1" sl="160" sc="1" el="160" ec="2" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="16" uspid="161" ordinal="2" sl="161" sc="1" el="161" ec="2" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="158" ec="1" el="161" bec="0" bev="0" fileid="1" xmlns:p8="xsi" />
+            </Method>
+          </Methods>
+        </Class>
+      </Classes>
+    </Module>
+  </Modules>
+</CoverageSession>

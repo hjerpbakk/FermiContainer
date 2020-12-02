@@ -119,3 +119,4 @@ ehthumbs.db
 Thumbs.db
 *.sublime-workspace
 *.userprefs
+.vs/FermiContainer/xs/UserPrefs.xml
