@@ -22,5 +22,6 @@ jobs:
         nuget push ./nupkgs/*.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey ${{ secrets.NUGET_KEY }}
         #nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Sankra/index.json -Username Sankra -Password ${{ secrets.GITHUB_TOKEN }}
         #nuget push ./nupkgs/*.nupkg -Source "GPR"
+        #nuget push ./nupkgs/*.snupkg -Source "GPR"
       shell: bash
       
