@@ -1,6 +1,6 @@
 # FermiContainer - The SIMPLEST IoC Container for .Net
 
-[![Latest version](https://img.shields.io/nuget/v/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/) [![Downloads from NuGet](https://img.shields.io/nuget/dt/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/)
+![CI](https://github.com/Sankra/FermiContainer/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Sankra/FermiContainer/branch/master/graph/badge.svg?token=3Gu54HC3Kw)](https://codecov.io/gh/Sankra/FermiContainer) [![Latest version](https://img.shields.io/nuget/v/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/) [![Downloads from NuGet](https://img.shields.io/nuget/dt/FermiContainer.Sources.svg)](https://www.nuget.org/packages/FermiContainer.Sources/)
 
 <img align="left" src="https://github.com/Sankra/FermiContainer/blob/master/docs/img/logo%402x.png" width="128" height="128">
 
