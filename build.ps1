@@ -1,0 +1,1 @@
+dotnet build ./FermiContainer.Standard/FermiContainer.Standard.csproj --configuration Release
