@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build_test_release:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup .NET if needed
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: '5.0.100'
+    - uses: actions/checkout@v1
+    - name: Build and test
+      run: |
+        chmod +x ci.sh
+        ./ci.sh
+      shell: bash
+    - name: Publish to NuGet
+      run: |
+        chmod +x pack.sh
+        ./pack.sh
+        nuget push ./nupkgs/*.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey ${{ secrets.NUGET_KEY }}
+        #nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Sankra/index.json -Username Sankra -Password ${{ secrets.GITHUB_TOKEN }}
+        #nuget push ./nupkgs/*.nupkg -Source "GPR"
+        #nuget push ./nupkgs/*.snupkg -Source "GPR"
+      shell: bash
+      
